@@ -109,7 +109,7 @@ The project is divided into **4 independent subsystems** based on the Component 
 
 ---
 
-### 🔴 Raks - UserExperience & Frontend
+### 🔴 Rakshit - UserExperience & Frontend
 
 **Responsibility**: User interface and presentation layer
 
