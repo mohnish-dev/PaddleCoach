@@ -876,16 +876,74 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Handle Start Training button - scroll to features section
+// Handle Start Training button - scroll to features section or prompt login
 const startTrainingBtn = document.getElementById('startTrainingBtn');
 if (startTrainingBtn) {
     startTrainingBtn.addEventListener('click', () => {
-        const featuresSection = document.getElementById('core-features');
-        if (featuresSection) {
-            featuresSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
+        if (isUserLoggedIn()) {
+            const featuresSection = document.getElementById('core-features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        } else {
+            promptLogin();
+        }
+    });
+}
+
+// Handle Watch Demo button
+const watchDemoBtn = document.getElementById('watchDemoBtn');
+if (watchDemoBtn) {
+    watchDemoBtn.addEventListener('click', () => {
+        if (isUserLoggedIn()) {
+            const featuresSection = document.getElementById('core-features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        } else {
+            promptLogin();
+        }
+    });
+}
+
+// Handle Start Now button
+const startNowBtn = document.getElementById('startNowBtn');
+if (startNowBtn) {
+    startNowBtn.addEventListener('click', () => {
+        if (isUserLoggedIn()) {
+            const featuresSection = document.getElementById('core-features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        } else {
+            promptLogin();
+        }
+    });
+}
+
+// Handle Train Now button
+const trainNowBtn = document.getElementById('trainNowBtn');
+if (trainNowBtn) {
+    trainNowBtn.addEventListener('click', () => {
+        if (isUserLoggedIn()) {
+            const featuresSection = document.getElementById('core-features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        } else {
+            promptLogin();
         }
     });
 }
