@@ -863,3 +863,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// Handle Start Training button - scroll to features section
+const startTrainingBtn = document.getElementById('startTrainingBtn');
+if (startTrainingBtn) {
+    startTrainingBtn.addEventListener('click', () => {
+        const featuresSection = document.getElementById('core-features');
+        if (featuresSection) {
+            featuresSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+}
