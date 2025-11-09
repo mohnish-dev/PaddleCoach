@@ -252,6 +252,12 @@ function hideAuthButtons() {
         heroSection.style.display = 'none';
     }
     
+    // Hide CTA banner when logged in
+    const ctaBanner = document.getElementById('ctaBanner');
+    if (ctaBanner) {
+        ctaBanner.style.display = 'none';
+    }
+    
     // Move Core Features section above where Hero was
     moveCoreFeaturesToTop();
 }
@@ -274,7 +280,13 @@ function showAuthButtons() {
         heroSection.style.display = 'flex';
     }
     
-    // Move Core Features section back to original position
+    // Show CTA banner when logged out
+    const ctaBanner = document.getElementById('ctaBanner');
+    if (ctaBanner) {
+        ctaBanner.style.display = 'block';
+    }
+    
+    // Move Core Features back to original position
     moveCoreFeaturesToOriginal();
 }
 
