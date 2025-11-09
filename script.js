@@ -105,12 +105,18 @@ document.head.appendChild(style);
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
-    if (hero) {
+    
+    // Only apply parallax effect when user is NOT logged in
+    if (hero && !isUserLoggedIn()) {
         // Only apply parallax when scrolled is low to avoid making it invisible
         hero.style.transform = `translateY(${scrolled * 0.3}px)`;
         // Keep minimum opacity at 0.3 to ensure it's always visible
         const newOpacity = Math.max(0.3, 1 - scrolled / 700);
         hero.style.opacity = newOpacity;
+    } else if (hero && isUserLoggedIn()) {
+        // When logged in, keep hero section stable (no parallax)
+        hero.style.transform = 'translateY(0)';
+        hero.style.opacity = '1';
     }
 });
 
@@ -247,9 +253,18 @@ function hideAuthButtons() {
         }
     }
     
-    // Hide hero section (landing image) when logged in
-    if (heroSection) {
-        heroSection.style.display = 'none';
+    // Move hero section (landing image) between core-features and steps when logged in
+    if (heroSection && !sectionsReordered) {
+        const coreFeatures = document.getElementById('core-features');
+        const stepsSection = document.querySelector('.steps');
+        
+        if (coreFeatures && stepsSection) {
+            // Show hero section
+            heroSection.style.display = 'flex';
+            
+            // Insert hero section after core-features (before steps)
+            stepsSection.parentNode.insertBefore(heroSection, stepsSection);
+        }
     }
     
     // Hide CTA banner when logged in
@@ -275,9 +290,17 @@ function showAuthButtons() {
         userMenu.style.display = 'none';
     }
     
-    // Show hero section (landing image) when logged out
+    // Move hero section back to its original position (before steps) when logged out
     if (heroSection) {
-        heroSection.style.display = 'flex';
+        const stepsSection = document.querySelector('.steps');
+        
+        if (stepsSection) {
+            // Show hero section
+            heroSection.style.display = 'flex';
+            
+            // Insert hero section before steps (original position)
+            stepsSection.parentNode.insertBefore(heroSection, stepsSection);
+        }
     }
     
     // Show CTA banner when logged out
